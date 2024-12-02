@@ -1,7 +1,11 @@
 <div>
   <ul>
     <% @events.each do |event| %>
-      <li><%= event %></li>
+      <li>
+        <h2><%= event.name %></h2>
+        <p><%= event.location %></p>
+        <p><%= number_to_currency(event.price, precision: 0) %></p>
+      </li>
     <% end%>
   </ul>
 </div>
