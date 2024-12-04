@@ -18,7 +18,7 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <header class="p-4 mb-10 bg-blue-500">
       <nav class="flex">
         <%= link_to image_tag("logo.png"), root_path %>
@@ -29,7 +29,7 @@
         </ul>
       </nav>
     </header>
-    <main class="flex-grow max-w-[50rem] w-auto mx-auto"><%= yield %></main>
+    <main class="flex-grow w-auto mx-auto"><%= yield %></main>
     <footer class="bg-zinc-800">
       <p class="p-10 text-center text-white">Made in <span class="text-blue-500">Alex's Sweatshop</span></p>
     </footer>
