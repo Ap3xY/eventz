@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root "events#index"
   get "events" => "events#index"
   get "events/:id" => "events#show", as: "event"
+  get "events/:id/edit" => "events#edit", as: "edit_event"
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
