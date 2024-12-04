@@ -1,4 +1,4 @@
-<section class="flex max-w-2xl p-10 mb-10 shadow-xl rounded-xl">
+<section class="flex max-w-6xl xl:min-w-[82rem] p-10 mx-4 mb-10 shadow-xl rounded-xl">
   <div>
     <h1 class="text-2xl"><%= @event.name %></h1>
     <h2 class="mb-2 text-xl font-bold text-zinc-500"><%= price(@event) %></h2>
@@ -6,6 +6,6 @@
     <p><%= @event.description %></p>
   </div>
 </section>
-<section class="pt-10 text-center border-t-2 border-gray-400 border-dashed">
+<section class="pt-10 mx-4 text-center border-t-2 border-gray-400 border-dashed">
   <%= link_to 'Edit', edit_event_path(@event), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
 </section>

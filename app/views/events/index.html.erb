@@ -1,4 +1,4 @@
-<div class="grid max-w-6xl grid-cols-2 gap-6 mx-auto">
+<div class="grid max-w-6xl mx-4 xl:min-w-[82rem] lg:grid-cols-2 xl:grid-cols-3 gap-6">
   <% @events.each do |event| %>
     <section class="p-6 mb-10 rounded-lg shadow-xl">
       <div class="flex flex-col">
@@ -14,3 +14,6 @@
     </section>
   <% end %>
 </div>
+<section class="pt-10 mb-10 text-center border-t-2 border-gray-400 border-dashed">
+  <%= link_to 'Add New Event', new_event_path(), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
+</section>
