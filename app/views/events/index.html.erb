@@ -1,12 +1,14 @@
 <% @events.each do |event| %>
-  <section class="shadow-xl rounded-lg p-6 mb-10">
+  <section class="p-6 mb-10 rounded-lg shadow-xl">
     <div class="flex flex-col">
-      <div class="flex justify-between items-center">
+      <div class="flex items-center justify-between">
         <h2 class="text-2xl"><%= event.name %></h2>
-        <span class="rounded-md bg-orange-500 text-center text-white w-14 p-2"><%= price(event) %></span>
+        <span class="p-2 text-center text-white bg-orange-500 rounded-md w-14"><%= price(event) %></span>
       </div>
-      <h3 class="text-lg mb-4 text-zinc-600"><%= day_and_time(event) %> in <%= event.location %></h3>
-      <p><%= truncate(event.description, length: 35, separator: " ")%></p>
+      <h3 class="mb-4 text-lg text-zinc-600"><%= day_and_time(event) %> in <%= event.location %></h3>
+      <p>
+        <%= truncate(event.description, length: 35, separator: " ") %>
+      </p>
     </div>
   </section>
 <% end %>

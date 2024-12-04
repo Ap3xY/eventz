@@ -19,12 +19,12 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header class="bg-blue-500 p-4 mb-10">
+    <header class="p-4 mb-10 bg-blue-500">
       <%= image_tag("logo.png") %>
     </header>
-    <div class="max-w-[50rem] w-auto mx-auto"><%= yield %></div>
+    <main class="flex-grow max-w-[50rem] w-auto mx-auto"><%= yield %></main>
     <footer class="bg-zinc-500">
-      <p class="text-white text-center p-4">Made in Alex's Sweatshop</p>
+      <p class="p-4 text-center text-white">Made in Alex's Sweatshop</p>
     </footer>
   </body>
 </html>
