@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem 'htmlbeautifier', '~> 1.3', '>= 1.3.1'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -61,3 +63,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 3.0"

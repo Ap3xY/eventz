@@ -14,16 +14,17 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header>
+    <header class="bg-blue-500 p-4 mb-10">
       <%= image_tag("logo.png") %>
     </header>
-    <div class="content"><%= yield %></div>
-    <footer>
-      <p>Made in Alex's Sweatshop</p>
+    <div class="max-w-[50rem] w-auto mx-auto"><%= yield %></div>
+    <footer class="bg-zinc-500">
+      <p class="text-white text-center p-4">Made in Alex's Sweatshop</p>
     </footer>
   </body>
 </html>
