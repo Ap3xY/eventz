@@ -1,36 +1,4 @@
 <section class="flex flex-col items-center justify-center max-w-2xl p-10 bg-white rounded-lg shadow-xl">
   <h1 class="mb-6 text-2xl font-semibold text-gray-900">Create a new Event</h1>
-  <%= form_with(model: @event, class: "w-full") do |f| %>
-    <div class="w-full space-y-4">
-      <div class="space-y-2">
-        <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :name,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
-      </div>
-      <div class="space-y-2">
-        <%= f.label :description, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_area :description, rows: 4,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
-      </div>
-      <div class="space-y-2">
-        <%= f.label :location, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :location,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
-      </div>
-      <div class="space-y-2">
-        <%= f.label :price, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.number_field :price,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
-      </div>
-      <div class="space-y-2">
-        <%= f.label :starts_at, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.datetime_select :starts_at,
-            { ampm: true },
-            { class: "mt-1 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" } %>
-      </div>
-      <div class="mt-6">
-        <%= f.submit class: "w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500" %>
-      </div>
-    </div>
-  <% end %>
+  <%= render "form", event: @event %>
 </section>
