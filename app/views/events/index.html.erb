@@ -1,19 +1,24 @@
-<div class="grid max-w-6xl mx-4 xl:min-w-[82rem] lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="grid max-w-6xl mx-4 min-w-[32rem] xl:min-w-[78rem] lg:grid-cols-2 xl:grid-cols-2 gap-6">
   <% @events.each do |event| %>
-    <section class="p-6 mb-10 rounded-lg shadow-xl">
-      <div class="flex flex-col">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl hover:text-blue-500"><%= link_to event.name, event %></h2>
-          <span class="p-2 text-center text-white bg-orange-500 rounded-md w-14"><%= price(event) %></span>
+    <section class="p-4 mb-4 rounded-lg shadow-lg">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-12 h-12">
+          <%= image_tag event.image_file_name, class: "w-full h-full object-cover" %>
         </div>
-        <h3 class="mb-4 text-lg text-zinc-600"><%= day_and_time(event) %> in <%= event.location %></h3>
-        <p>
-          <%= truncate(event.description, length: 35, separator: " ") %>
-        </p>
+        <div class="flex-grow">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-medium hover:text-blue-500"><%= link_to event.name, event %></h2>
+            <span class="px-2 py-1 text-sm text-white bg-orange-500 rounded"><%= price(event) %></span>
+          </div>
+          <h3 class="text-sm text-zinc-600"><%= day_and_time(event) %> in <%= event.location %></h3>
+          <p class="text-sm text-zinc-700">
+            <%= truncate(event.description, length: 35, separator: " ") %>
+          </p>
+        </div>
       </div>
     </section>
   <% end %>
 </div>
-<section class="pt-10 mb-10 text-center border-t-2 border-gray-400 border-dashed">
+<section class="pt-10 mx-4 mb-10 text-center border-t-2 border-gray-400 border-dashed">
   <%= link_to 'Add New Event', new_event_path(), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
 </section>

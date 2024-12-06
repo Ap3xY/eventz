@@ -39,5 +39,5 @@ private
 
     def event_params
         params.require(:event).
-        permit(:name, :description, :location, :price, :starts_at)
+        permit(:name, :description, :location, :price, :starts_at, :capacity, :image_file_name)
     end
