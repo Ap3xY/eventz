@@ -8,4 +8,5 @@
 </section>
 <section class="pt-10 mx-4 text-center border-t-2 border-gray-400 border-dashed">
   <%= link_to 'Edit', edit_event_path(@event), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
+  <%= link_to 'Delete', @event, class: "py-2 px-3 bg-gray-500 rounded-md text-white", data: { turbo_method: :delete, turbo_confirm: "Really?!"} %>
 </section>
