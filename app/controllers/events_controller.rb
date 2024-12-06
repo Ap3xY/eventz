@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     def index
-        @events = Event.all
+        @events = Event.upcoming
     end
 
     def show
@@ -34,7 +34,6 @@ class EventsController < ApplicationController
         redirect_to events_url, status: :see_other
     end
 end
-
 
 private
 
