@@ -1,40 +1,76 @@
 <%= form_with(model: event, class: "w-full") do |f| %>
   <div class="w-full space-y-4">
+    <%= render "shared/errors", object: event %>
     <div class="space-y-2">
       <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
       <%= f.text_field :name, autofocus: true,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{event.errors[:name].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+      <% if event.errors[:name].any? %>
+        <p class="mt-1 text-sm text-red-600"><%= event.errors[:name].to_sentence %></p>
+      <% end %>
     </div>
     <div class="space-y-2">
       <%= f.label :description, class: "block text-sm font-medium text-gray-700" %>
       <%= f.text_area :description, rows: 4,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{event.errors[:description].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+      <% if event.errors[:description].any? %>
+        <p class="mt-1 text-sm text-red-600"><%= event.errors[:description].to_sentence %></p>
+      <% end %>
     </div>
     <div class="space-y-2">
       <%= f.label :location, class: "block text-sm font-medium text-gray-700" %>
       <%= f.text_field :location,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{event.errors[:location].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+      <% if event.errors[:location].any? %>
+        <p class="mt-1 text-sm text-red-600"><%= event.errors[:location].to_sentence %></p>
+      <% end %>
     </div>
     <div class="space-y-2">
       <%= f.label :price, class: "block text-sm font-medium text-gray-700" %>
       <%= f.number_field :price,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{event.errors[:price].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+      <% if event.errors[:price].any? %>
+        <p class="mt-1 text-sm text-red-600"><%= event.errors[:price].to_sentence %></p>
+      <% end %>
     </div>
     <div class="space-y-2">
       <%= f.label :starts_at, class: "block text-sm font-medium text-gray-700" %>
       <%= f.datetime_select :starts_at,
             { ampm: true },
-            { class: "mt-1 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" } %>
+            { class: "mt-1 rounded-md shadow-sm sm:text-sm #{event.errors[:starts_at].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" } %>
+      <% if event.errors[:starts_at].any? %>
+        <p class="mt-1 text-sm text-red-600"><%= event.errors[:starts_at].to_sentence %></p>
+      <% end %>
     </div>
     <div class="space-y-2">
       <%= f.label :capacity, class: "block text-sm font-medium text-gray-700" %>
       <%= f.number_field :capacity,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{event.errors[:capacity].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+      <% if event.errors[:capacity].any? %>
+        <p class="mt-1 text-sm text-red-600"><%= event.errors[:capacity].to_sentence %></p>
+      <% end %>
     </div>
     <div class="space-y-2">
       <%= f.label :image_file_name, class: "block text-sm font-medium text-gray-700" %>
       <%= f.text_field :image_file_name,
-            class: "w-full mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm" %>
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{event.errors[:image_file_name].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+      <% if event.errors[:image_file_name].any? %>
+        <p class="mt-1 text-sm text-red-600"><%= event.errors[:image_file_name].to_sentence %></p>
+      <% end %>
     </div>
     <div class="mt-6">
       <%= f.submit class: "w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500" %>
