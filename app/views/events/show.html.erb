@@ -1,12 +1,14 @@
 <section class="flex max-w-6xl xl:min-w-[82rem] p-10 mx-4 mb-10 shadow-xl rounded-xl">
-  <div>
+  <div class="w-full">
     <div class="flex-shrink-0 w-12 h-12 mb-4">
       <%= image_tag @event.image_file_name, class: "w-full h-full object-cover" %>
     </div>
     <h1 class="text-2xl"><%= @event.name %></h1>
     <h2 class="mb-2 text-xl font-bold text-zinc-500"><%= pluralize(@event.capacity, "spot") %> &bull; <%= price(@event) %></h2>
     <h3 class="mb-4 text-lg text-zinc-600"><%= day_and_time(@event) %> in <%= @event.location %></h3>
-    <p><%= @event.description %></p>
+    <p class="break-words whitespace-normal overflow-wrap-normal">
+      <%= @event.description %>
+    </p>
   </div>
 </section>
 <section class="pt-10 mx-4 text-center border-t-2 border-gray-400 border-dashed">

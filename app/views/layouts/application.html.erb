@@ -20,7 +20,9 @@
   </head>
   <body class="flex flex-col min-h-screen">
     <%= render "layouts/header" %>
-    <main class="flex-grow w-auto mx-auto"><%= yield %></main>
+    <main class="flex-grow w-auto mx-auto">
+      <%= render "layouts/flash" %>
+      <%= yield %></main>
     <%= render "layouts/footer" %>
   </body>
 </html>
