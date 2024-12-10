@@ -1,0 +1,18 @@
+<div class="max-w-4xl p-6 mx-auto">
+  <h1 class="mb-6 text-2xl font-bold text-gray-800">
+    Registrations for <%= link_to @event.name, @event, class: "text-blue-600 hover:text-blue-800 hover:underline" %>
+  </h1>
+  <% if @registrations.empty? %>
+    <p class="py-8 text-lg text-center text-gray-600">There are currently no registrations for this event.</p>
+  <% else %>
+    <ul class="space-y-3">
+      <% @registrations.each do |r| %>
+        <li class="flex items-center p-4 transition-shadow duration-200 bg-white rounded-lg shadow hover:shadow-md">
+          <span class="text-gray-700"><%= r.name %></span>
+          <span class="mx-2 text-gray-400">&bull;</span>
+          <span class="text-gray-600"><%= r.how_heard %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
