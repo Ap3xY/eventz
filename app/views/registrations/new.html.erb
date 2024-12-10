@@ -1,0 +1,42 @@
+<div class="max-w-2xl p-8 mx-auto">
+  <h1 class="mb-6 text-2xl font-bold text-gray-800">Register for <%= @event.name %></h1>
+  <%= form_with(model: [@event, @registration], class: "w-full") do |f| %>
+    <div class="w-full space-y-4">
+      <%= render "shared/errors", object: @registration %>
+      <div class="space-y-2">
+        <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :name, autofocus: true,
+              class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{@registration.errors[:name].any? ? 
+                'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+                'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+        <% if @registration.errors[:name].any? %>
+          <p class="mt-1 text-sm text-red-600"><%= @registration.errors[:name].to_sentence %></p>
+        <% end %>
+      </div>
+      <div class="space-y-2">
+        <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email,
+              class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{@registration.errors[:email].any? ? 
+                'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+                'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
+        <% if @registration.errors[:email].any? %>
+          <p class="mt-1 text-sm text-red-600"><%= @registration.errors[:email].to_sentence %></p>
+        <% end %>
+      </div>
+      <div class="space-y-2">
+        <%= f.label :how_heard, "How did you hear about this event?", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.select :how_heard, Registration::HOW_HEARD_OPTIONS,
+            { prompt: 'Select one' },
+            { class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{@registration.errors[:how_heard].any? ? 
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+              'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" } %>
+        <% if @registration.errors[:how_heard].any? %>
+          <p class="mt-1 text-sm text-red-600"><%= @registration.errors[:how_heard].to_sentence %></p>
+        <% end %>
+      </div>
+      <div class="mt-6">
+        <%= f.submit "Register!", class: "w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500" %>
+      </div>
+    </div>
+  <% end %>
+</div>
