@@ -1,0 +1,25 @@
+<div class="container max-w-6xl px-4 py-8 mx-auto">
+  <h1 class="mb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+    <%= pluralize(@users.size, "User") %>
+  </h1>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <% @users.each do |u| %>
+      <div class="p-6 transition-all duration-300 ease-in-out transform bg-white shadow-md group rounded-xl ">
+        <div class="flex flex-col space-y-3">
+          <%= link_to user_path(u), class: "group-hover:text-blue-600 transition-colors duration-200" do %>
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold text-gray-800 group-hover:text-blue-600">
+                <%= u.name %>
+              </h2>
+              <span class="inline-flex items-center justify-center">
+              </span>
+            </div>
+          <% end %>
+          <p class="flex items-center text-sm text-gray-500">
+            Created <%= time_ago_in_words(u.created_at)%> ago
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
