@@ -4,7 +4,7 @@
       <%= image_tag @event.image_file_name, class: "w-full h-full object-cover" %>
     </div>
     <h1 class="text-2xl"><%= @event.name %></h1>
-    <h2 class="mb-2 text-xl font-bold text-zinc-500"><%= pluralize(@event.capacity, "spot") %> &bull; <%= price(@event) %></h2>
+    <h2 class="mb-2 text-xl font-bold text-zinc-500"><%= pluralize(@event.spots_left, "spot") %> remaining &bull; <%= price(@event) %></h2>
     <h3 class="mb-4 text-lg text-zinc-600"><%= day_and_time(@event) %> in <%= @event.location %></h3>
     <p class="mb-6 break-words whitespace-normal overflow-wrap-normal">
       <%= @event.description %>

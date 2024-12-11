@@ -8,7 +8,6 @@ class RegistrationsController < ApplicationController
     @registration = @event.registrations.new
   end
 
-
   def create
     @registration = @registration = @event.registrations.new(registration_params)
 

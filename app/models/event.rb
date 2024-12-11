@@ -22,4 +22,8 @@ class Event < ApplicationRecord
     def sold_out?
         (capacity - registrations.size).zero?
     end
+
+    def spots_left
+        [ capacity - registrations.size, 0 ].max
+    end
 end
