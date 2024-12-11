@@ -42,7 +42,11 @@
       <% end %>
     </div>
     <div class="mt-6">
-      <%= f.submit "Sign Up", class: "w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500" %>
+      <% if user.new_record? %>
+        <%= f.submit "Create Account", class: "w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500" %>
+      <% else %>
+        <%= f.submit "Update Account", class: "w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500" %>
+      <% end %>
     </div>
   </div>
 <% end %>
