@@ -8,7 +8,7 @@
     <ul class="space-y-3">
       <% @registrations.each do |r| %>
         <li class="flex items-center p-4 transition-shadow duration-200 bg-white rounded-lg shadow hover:shadow-md">
-          <span class="text-gray-700"><%= r.name %></span>
+          <span class="text-gray-700"><%= link_to r.user.name, r.user %></span>
           <span class="mx-2 text-gray-400">&bull;</span>
           <span class="text-gray-600"><%= r.how_heard %></span>
         </li>
