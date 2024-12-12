@@ -4,8 +4,8 @@
     <div class="space-y-2">
       <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
       <%= f.text_field :name, autofocus: true,
-            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:name].any? ? 
-              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:name].any? ?
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' :
               'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
       <% if user.errors[:name].any? %>
         <p class="mt-1 text-sm text-red-600"><%= user.errors[:name].to_sentence %></p>
@@ -14,8 +14,8 @@
     <div class="space-y-2">
       <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
       <%= f.email_field :email,
-            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:email].any? ? 
-              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:email].any? ?
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' :
               'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
       <% if user.errors[:email].any? %>
         <p class="mt-1 text-sm text-red-600"><%= user.errors[:email].to_sentence %></p>
@@ -24,8 +24,8 @@
     <div class="space-y-2">
       <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
       <%= f.password_field :password,
-            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:password].any? ? 
-              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:password].any? ?
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' :
               'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
       <% if user.errors[:password].any? %>
         <p class="mt-1 text-sm text-red-600"><%= user.errors[:password].to_sentence %></p>
@@ -34,8 +34,8 @@
     <div class="space-y-2">
       <%= f.label :password_confirmation, "Confirm Password", class: "block text-sm font-medium text-gray-700" %>
       <%= f.password_field :password_confirmation,
-            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:password_confirmation].any? ? 
-              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' : 
+            class: "w-full mt-1 block rounded-md shadow-sm sm:text-sm #{user.errors[:password_confirmation].any? ?
+              'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500' :
               'border-gray-300 focus:border-orange-500 focus:ring-orange-500'}" %>
       <% if user.errors[:password_confirmation].any? %>
         <p class="mt-1 text-sm text-red-600"><%= user.errors[:password_confirmation].to_sentence %></p>

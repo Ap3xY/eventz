@@ -1,9 +1,14 @@
 source "https://rubygems.org"
 
-gem 'htmlbeautifier', '~> 1.3', '>= 1.3.1'
-gem 'solargraph', group: :development
-gem 'rubocop', require: false
-gem 'erb_lint', require: false
+gem "htmlbeautifier", "~> 1.3", ">= 1.3.1"
+
+gem "rubocop", require: false
+gem "erb_lint", require: false
+
+group :development do
+  gem "erb_lint"
+  gem "solargraph"
+end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
