@@ -19,6 +19,8 @@
     </section>
   <% end %>
 </div>
-<section class="pt-10 mx-4 mb-10 text-center border-t-2 border-gray-400 border-dashed">
-  <%= link_to 'Add New Event', new_event_path(), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
-</section>
+<% if current_user_admin? %>
+  <section class="pt-10 mx-4 mb-10 text-center border-t-2 border-gray-400 border-dashed">
+    <%= link_to 'Add New Event', new_event_path(), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
+  </section>
+<% end %>
