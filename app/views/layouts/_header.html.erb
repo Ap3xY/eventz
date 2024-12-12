@@ -8,13 +8,19 @@
         <%= link_to 'All Events', events_path, class: "py-2" %>
       </li>
     </ul>
-    <ul class="flex items-center gap-4">
-      <li>
+     <ul class="flex items-center gap-4">
+      <% if current_user %>
+        <li class="text-white">
+          <%= link_to current_user.name, current_user %>
+        </li>
+      <% else %>
+        <li>
         <%= link_to 'Sign In', new_session_path, class: "px-4 py-2 bg-white text-blue-500 rounded-lg hover:bg-gray-100 transition-colors duration-200" %>
-      </li>
-      <li>
-        <%= link_to 'Sign Up', signup_path, class: "px-4 py-2 bg-white text-blue-500 rounded-lg hover:bg-gray-100 transition-colors duration-200" %>
-      </li>
+        </li>
+        <li>
+          <%= link_to 'Sign Up', signup_path, class: "px-4 py-2 bg-white text-blue-500 rounded-lg hover:bg-gray-100 transition-colors duration-200" %>
+        </li>
+      <% end %>
     </ul>
   </nav>
 </header>
