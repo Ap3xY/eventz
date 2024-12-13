@@ -45,11 +45,11 @@ class EventsController < ApplicationController
         @event.destroy
         redirect_to events_url, status: :see_other, notice: "Event successfully deleted!"
     end
-end
 
-private
 
+    private
     def event_params
         params.require(:event).
-        permit(:name, :description, :location, :price, :starts_at, :capacity, :image_file_name)
+          permit(:name, :description, :location, :price, :starts_at, :capacity, :image_file_name, category_ids: [])
     end
+end
