@@ -15,6 +15,18 @@
     </div>
   </div>
 </section>
+
+<section class="max-w-6xl xl:min-w-[82rem] p-6 mx-4 mb-10 bg-gray-50 rounded-xl">
+  <h2 class="mb-4 text-xl font-semibold text-gray-700">Liked by <%= pluralize(@likers.count, 'person') %></h2>
+  <div class="flex flex-wrap gap-4">
+    <% @likers.each do |liker| %>
+      <div class="flex items-center gap-2 p-2 bg-white rounded-lg shadow-sm">
+        <span class="text-sm text-gray-700"><%= liker.name %></span>
+      </div>
+    <% end %>
+  </div>
+</section>
+
 <% if current_user_admin? %>
   <section class="pt-10 mx-4 text-center border-t-2 border-gray-400 border-dashed">
     <%= link_to 'Edit', edit_event_path(@event), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
