@@ -1,35 +1,108 @@
-<section class="flex max-w-6xl xl:min-w-[82rem] p-10 mx-4 mb-10 shadow-xl rounded-xl">
-  <div class="w-full">
-    <div class="flex-shrink-0 w-12 h-12 mb-4">
-      <%= image_tag @event.image_file_name, class: "w-full h-full object-cover" %>
-    </div>
-    <h1 class="text-2xl"><%= @event.name %></h1>
-    <h2 class="mb-2 text-xl font-bold text-zinc-500"><%= pluralize(@event.spots_left, "spot") %> remaining &bull; <%= price(@event) %></h2>
-    <h3 class="mb-4 text-lg text-zinc-600"><%= day_and_time(@event) %> in <%= @event.location %></h3>
-    <p class="mb-6 break-words whitespace-normal overflow-wrap-normal">
-      <%= @event.description %>
-    </p>
-    <div class="space-x-4">
-      <%= link_to 'View Registrations', event_registrations_path(@event), class: "inline-block py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200" %>
-      <%= register_or_sold_out(@event) %>
-    </div>
-  </div>
-</section>
-
-<section class="max-w-6xl xl:min-w-[82rem] p-6 mx-4 mb-10 bg-gray-50 rounded-xl">
-  <h2 class="mb-4 text-xl font-semibold text-gray-700">Liked by <%= pluralize(@likers.count, 'person') %></h2>
-  <div class="flex flex-wrap gap-4">
-    <% @likers.each do |liker| %>
-      <div class="flex items-center gap-2 p-2 bg-white rounded-lg shadow-sm">
-        <span class="text-sm text-gray-700"><%= liker.name %></span>
+<section class="max-w-6xl xl:min-w-[82rem] mx-auto my-8 bg-white shadow-lg rounded-2xl overflow-hidden">
+  <div class="p-8">
+    <%# Event Header Section %>
+    <div class="flex items-start gap-6">
+      <div class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden shadow-md">
+        <%= image_tag @event.image_file_name, class: "w-full h-full object-cover" %>
       </div>
-    <% end %>
+      <div class="flex-1">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= @event.name %></h1>
+        <div class="flex flex-wrap gap-4 items-center text-lg">
+          <span class="flex items-center text-emerald-600 font-semibold">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <%= pluralize(@event.spots_left, "spot") %> remaining
+          </span>
+          <span class="text-gray-600">&bull;</span>
+          <span class="flex items-center text-gray-900 font-semibold">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <%= price(@event) %>
+          </span>
+        </div>
+        <div class="mt-3 flex items-center text-gray-600">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <%= day_and_time(@event) %> in <%= @event.location %>
+        </div>
+      </div>
+    </div>
+
+    <%# Event Description %>
+    <div class="mt-8 prose prose-gray max-w-none">
+      <p class="text-gray-700 leading-relaxed">
+        <%= @event.description %>
+      </p>
+    </div>
+
+    <%# Action Buttons %>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <%= link_to event_registrations_path(@event),
+                  class: "inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md" do %>
+        View Registrations
+      <% end %>
+
+      <%= register_or_sold_out(@event) %>
+
+      <% if current_user %>
+        <% if @like %>
+          <%= button_to event_like_path(@event, @like),
+                        method: :delete,
+                        class: "inline-flex items-center px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md" do %>
+            <svg class="w-5 h-5 mr-2" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+            Unlike (<%= @event.likers.size %>)
+          <% end %>
+        <% else %>
+          <%= button_to event_likes_path(@event),
+                        class: "inline-flex items-center px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md" do %>
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+            Like (<%= @event.likers.size %>)
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </section>
 
+<%# Likers Section %>
+<section class="max-w-6xl xl:min-w-[82rem] mx-auto mb-8 bg-gray-50 rounded-2xl overflow-hidden">
+  <div class="p-6">
+    <h2 class="flex items-center text-xl font-semibold text-gray-800 mb-6">
+      <svg class="w-6 h-6 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+      </svg>
+      Liked by <%= pluralize(@likers.count, 'person') %>
+    </h2>
+    <div class="flex flex-wrap gap-3">
+      <% @likers.each do |liker| %>
+        <div class="flex items-center px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+          <svg class="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          <span class="text-sm font-medium text-gray-700"><%= liker.name %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%# Admin Actions %>
 <% if current_user_admin? %>
-  <section class="pt-10 mx-4 text-center border-t-2 border-gray-400 border-dashed">
-    <%= link_to 'Edit', edit_event_path(@event), class: "py-2 px-3 bg-gray-500 rounded-md text-white" %>
-    <%= link_to 'Delete', @event, class: "py-2 px-3 bg-gray-500 rounded-md text-white", data: { turbo_method: :delete, turbo_confirm: "Really?!"} %>
+  <section class="max-w-6xl xl:min-w-[82rem] mx-auto mt-8 pt-8 border-t-2 border-gray-200">
+    <div class="flex justify-center gap-4">
+      <%= link_to 'Edit', edit_event_path(@event),
+                  class: "px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md" %>
+      <%= link_to 'Delete', @event,
+                  class: "px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md",
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this event?" } %>
+    </div>
   </section>
 <% end %>

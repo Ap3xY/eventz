@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :likes
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root "events#index"
   resources :events do
     resources :registrations
+    resources :likes
   end
 
   resource :session, only: [ :new, :create, :destroy ]
